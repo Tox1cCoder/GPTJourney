@@ -103,13 +103,14 @@ def index():
         for button_name in button_messages.keys():
             button_states[button_name] = False
 
-    # Store the updated message history and button messages in the session
     session['message_history'] = message_history
     session['button_messages'] = button_messages
 
-    # Generate an image based on the chat response text
     image_url = get_img(text)
 
-    # Render the template with the updated information
     return render_template('home.html', title=title, text=text, image_url=image_url, button_messages=button_messages,
                            button_states=button_states, message=message)
+
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5001)
